@@ -8,11 +8,14 @@ import (
 )
 
 func main() {
+	
 	// Read input file
 
 	input, _ := os.Open("input.txt")
 	defer input.Close()
 	sc := bufio.NewScanner(input)
+	
+	// Declare variables
 
 	var sumOfPriorities int
 
@@ -29,10 +32,10 @@ func main() {
 
 		for _, itemRightPart := range sc.Text()[len(sc.Text())/2:] {
 
-			// If an item is in the first set, it is both compartments
+			// If an item is in the first set, it is located in both compartments
 
 			if items[itemRightPart] {
-				sumOfPriorities += int(unicode.ToLower(itemRightPart) - 96)
+				sumOfPriorities += int(unicode.ToLower(itemRightPart) - 96) // 70+26
 				if unicode.IsUpper(itemRightPart) {
 					sumOfPriorities += 26
 				}
@@ -40,5 +43,5 @@ func main() {
 			}
 		}
 	}
-	fmt.Println(sumOfPriorities)
+	fmt.Println(sumOfPriorities) // Print answer
 }
